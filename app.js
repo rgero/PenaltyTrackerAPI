@@ -1,8 +1,12 @@
 const express = require('express');
+const SQLite = require('sqlite');
 const QueryParser = require('./queryparser');
 const app = express();
 
 app.use(express.json())
+
+// Connecting to to the Database
+const database = SQLite.open('./season.db', { Promise })
 
 app.get('/', (req, res) => {
     res.send("This is the index page for the Penalty Tracker API.")
