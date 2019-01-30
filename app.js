@@ -1,26 +1,27 @@
 const express = require('express');
-const SQLite = require('sqlite');
 const QueryParser = require('./queryparser');
+const DatabaseManager = require('./databasemanager')
 const app = express();
 
 app.use(express.json())
 
-// Connecting to to the Database
-const database = SQLite.open('./season.db', { Promise })
+const database = new DatabaseManager('season.db');
+
 
 app.get('/', (req, res) => {
     res.send("This is the index page for the Penalty Tracker API.")
 })
 
-app.get('/api/', (req, res)=>{
+app.get('/api/', async (req, res)=>{
 
     let queryParams = req.query;
     let dbQuery = {}
+    
 
-    // Check to see if there are any parameters.
-    if (!Object.keys(queryParams).length){
-        res.redirect('/');
-    }
+    // // Check to see if there are any parameters.
+    // if (!Object.keys(queryParams).length){
+    //     res.redirect('/');
+    // }
 
     /* Parameters that we care about?
         Players
@@ -48,10 +49,12 @@ app.get('/api/', (req, res)=>{
     dbQuery["start"] = queryParams["start"]
     dbQuery["end"] = queryParams["end"]
     dbQuery["season"] = queryParams["season"]
-    
+
+    // Query the database.
+    var results = await database.all(dbQuery);
 
     // Send a response
-    res.send(JSON.stringify(dbQuery));
+    res.send(JSON.stringify(results));
 })
 
 // Reading Environment Variables
