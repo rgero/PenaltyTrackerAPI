@@ -1,6 +1,11 @@
 const sqlite3 = require('sqlite3').verbose();
 const Promise = require('bluebird');
 
+var DirectionEnum = {
+    BEFORE: false,
+    AFTER: true
+}
+
 class Database {
     constructor(dbPath){
         this.db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (error)=>
@@ -27,33 +32,98 @@ class Database {
         return newString
     }
 
-    constructWhere(params){
+
+    checkForData(arr, currentIndex = -1, direction = DirectionEnum.BEFORE){
+            if (currentIndex === -1){
+                currentIndex = arr.length;
+            }
+            
+            if (!direction)
+            {
+                for(var i = 0; i < currentIndex; i++){
+                    if (arr[i]) {return true;}
+                }
+            } else {
+                for(var i = arr.length-1; i > currentIndex; i--){
+                    if (arr[i]) {return true;}
+                }
+            }
+            return false;
+    }
+
+    statementConstructor(paramArr, index, keyword)
+    {
+        var sqlString = ""
+        if( paramArr[index] )
+        {
+            if (!this.checkForData(paramArr, index, DirectionEnum.BEFORE))
+            {
+                sqlString += " WHERE "
+            }
+            var testArr = paramArr[index];
+            sqlString = sqlString + "(" + this.arrayParser(testArr, keyword) + ")"
+            if (this.checkForData(paramArr, index, DirectionEnum.AFTER)){
+                sqlString += " AND "
+            }
+        }
+        return sqlString;
+    }
+
+    constructWhere(paramArr){
 
         // Default Values
-        var season = "Regular_18_19"
-        var players = ""
+        var season = (paramArr[0] ? paramArr[0] : "Regular_18_19");
+        paramArr.splice(0,1); // Removing Season.
         var sqlString = "SELECT * FROM "
+
+        /* Order of array
+            Players
+            Teams
+            Opponents
+            Home/Away
+            Start Date
+            End Date
+            Penalties
+        */    
+
         
-        if (params["season"])
+        var sqlString = sqlString + season;
+
+        // Check to see if there are any search parameters
+        if(!this.checkForData(paramArr))
         {
-            season = params["season"]
-        }
-        var sqlString = sqlString + season + " WHERE";
-        if (params["players"]){
-            sqlString = sqlString + this.arrayParser(params["players"], "playerName")
-        }
-        var sqlString = sqlString + " AND "
-        if (params["penalties"]){
-            sqlString = sqlString + this.arrayParser(params["penalties"], "penalty")
+            return sqlString;
         }
 
+        sqlString += this.statementConstructor(paramArr, 0, "playerName");
+        sqlString += this.statementConstructor(paramArr, 1, "teamName");
+        sqlString += this.statementConstructor(paramArr, 2, "opponentTeam");
+        sqlString += this.statementConstructor(paramArr, 3, "penalty");
+        //Location
+        if( paramArr[4] )
+        {
+            if (!this.checkForData(paramArr, 4, DirectionEnum.BEFORE))
+            {
+                sqlString += " WHERE "
+            }
+            var testArr = paramArr[4];
+            sqlString = sqlString + "homeAway=" + testArr + " "
+            if (this.checkForData(paramArr, 4, DirectionEnum.AFTER)){
+                sqlString += " AND "
+            }
+        }
+
+        //Start Date and End Date
+
+        // Refs
+        sqlString += this.statementConstructor(paramArr, 7, "refs");
         console.log(sqlString)
         
         return sqlString;
 
     }
 
-    all(params = {}){
+    all(params = []){
         //Construct the Query Statement based on the Parameters, store in string
         var sql = this.constructWhere(params);
         console.log(sql);

@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 app.get('/api/', async (req, res)=>{
 
     let queryParams = req.query;
-    let dbQuery = {}
+    let dbQuery = []
     
 
     // // Check to see if there are any parameters.
@@ -33,22 +33,18 @@ app.get('/api/', async (req, res)=>{
         Penalties
         Season Type
     */
-    if (queryParams["players"]) {
-        dbQuery["players"] = QueryParser.parseInput(queryParams["players"])
-    }
-    if (queryParams["teams"]) {
-        dbQuery["teams"] = QueryParser.parseInput(queryParams["teams"])
-    }
-    if (queryParams["opponents"]) {
-        dbQuery["opponents"] = QueryParser.parseInput(queryParams["opponents"])
-    }
-    if (queryParams["penalties"]) {
-        dbQuery["penalties"] = QueryParser.parseInput(queryParams["penalties"])
-    }
-    dbQuery["location"] = queryParams["location"]
-    dbQuery["start"] = queryParams["start"]
-    dbQuery["end"] = queryParams["end"]
-    dbQuery["season"] = queryParams["season"]
+    dbQuery.push(queryParams["season"]);
+    dbQuery.push(QueryParser.parseInput(queryParams["players"]));
+    dbQuery.push(QueryParser.parseInput(queryParams["teams"]));
+    dbQuery.push(QueryParser.parseInput(queryParams["opponents"]));
+    dbQuery.push(QueryParser.parseInput(queryParams["penalties"]));
+    dbQuery.push(queryParams["location"])
+    dbQuery.push(queryParams["start"])
+    dbQuery.push(queryParams["end"])
+    dbQuery.push(QueryParser.parseInput(queryParams["referees"]));
+
+    console.log("Current DB: ", dbQuery);
+    
 
     // Query the database.
     var results = await database.all(dbQuery);

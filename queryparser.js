@@ -1,5 +1,9 @@
 function parseInput(inputString){
-    return inputString.split(',');
+    if (inputString)
+    {
+        return inputString.split(',');
+    }
+    return undefined;
 }
 
 module.exports.parseInput = parseInput;
