@@ -18,7 +18,6 @@ class Database {
         //Construct the Query Statement based on the Parameters, store in string
         var statementConstructor = new StatementConstructor(params)
         var sql = statementConstructor.constructWhere();
-        console.log(sql);
 
         return new Promise((resolve, reject)=> {
             this.db.all(sql, (err, rows)=> {

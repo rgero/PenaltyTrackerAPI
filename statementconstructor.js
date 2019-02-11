@@ -66,20 +66,7 @@ class StatementConstructor {
         // Default Values
         var season = (this.params[0] ? this.params[0] : "Regular_18_19");
         this.params.splice(0,1); // Removing Season.
-        var sqlString = "SELECT * FROM "
-
-        /* Order of array
-            Players
-            Teams
-            Opponents
-            Home/Away
-            Start Date
-            End Date
-            Penalties
-        */    
-
-        
-        var sqlString = sqlString + season;
+        var sqlString = "SELECT * FROM " + season;
 
         // Check to see if there are any search parameters
         if(!this.checkForData(this.params))
@@ -127,9 +114,7 @@ class StatementConstructor {
         }
 
         // Refs
-        sqlString += this.statementConstructor(7, "refs");
-        console.log(sqlString)
-        
+        sqlString += this.statementConstructor(7, "refs");        
         return sqlString;
 
     }
