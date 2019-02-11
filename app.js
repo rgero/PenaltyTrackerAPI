@@ -42,10 +42,7 @@ app.get('/api/', async (req, res)=>{
     dbQuery.push(queryParams["start"])
     dbQuery.push(queryParams["end"])
     dbQuery.push(QueryParser.parseInput(queryParams["referees"]));
-
-    console.log("Current DB: ", dbQuery);
     
-
     // Query the database.
     var results = await database.all(dbQuery);
 
