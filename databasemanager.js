@@ -114,6 +114,25 @@ class Database {
         }
 
         //Start Date and End Date
+        var startDate = (paramArr[5] ? paramArr[5] : null);
+        var endDate =  (paramArr[6] ? paramArr[6] : null);
+        if (startDate || endDate)
+        {
+            if (!this.checkForData(paramArr, 5, DirectionEnum.BEFORE))
+            {
+                sqlString += " WHERE "
+            }
+            if (startDate && !endDate){
+                sqlString += "gameDate >= date(" + startDate + ") "
+            } else if (!startDate && endDate){
+                sqlString += "gameDate <= date(" + endDate + ") "
+            } else if (startDate && endDate){
+                sqlString += "gameDate BETWEEN date('" + startDate + "') AND date('" + endDate + "') "
+            }
+            if (this.checkForData(paramArr, 6, DirectionEnum.AFTER)){
+                sqlString += " AND "
+            }
+        }
 
         // Refs
         sqlString += this.statementConstructor(paramArr, 7, "refs");
