@@ -51,7 +51,7 @@ app.get('/api/', async (req, res)=>{
 })
 
 // Reading Environment Variables
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8888;
 app.listen(port, ()=> {
     console.log("Listening on port: ", port);
 })
