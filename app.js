@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors')
 const QueryParser = require('./queryparser');
 const DatabaseManager = require('./databasemanager')
 const app = express();
 
 app.use(express.json())
+app.use(cors());
 
 const database = new DatabaseManager('season.db');
 
