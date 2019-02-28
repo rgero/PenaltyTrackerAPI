@@ -37,8 +37,8 @@ app.get('/api/', async (req, res)=>{
     */
     dbQuery.push(queryParams["season"]);
     dbQuery.push(QueryParser.parseInput(queryParams["players"]));
-    dbQuery.push(QueryParser.parseInput(queryParams["teams"]));
-    dbQuery.push(QueryParser.parseInput(queryParams["opponents"]));
+    dbQuery.push(QueryParser.parseTeams(queryParams["teams"]));
+    dbQuery.push(QueryParser.parseTeams(queryParams["opponents"]));
     dbQuery.push(QueryParser.parseInput(queryParams["penalties"]));
     dbQuery.push(queryParams["location"])
     dbQuery.push(queryParams["start"])
