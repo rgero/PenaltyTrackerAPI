@@ -102,9 +102,9 @@ class StatementConstructor {
                 sqlString += " WHERE "
             }
             if (startDate && !endDate){
-                sqlString += "gameDate >= date(" + startDate + ") "
+                sqlString += "gameDate >= date('" + startDate + "') "
             } else if (!startDate && endDate){
-                sqlString += "gameDate <= date(" + endDate + ") "
+                sqlString += "gameDate <= date('" + endDate + "') "
             } else if (startDate && endDate){
                 sqlString += "gameDate BETWEEN date('" + startDate + "') AND date('" + endDate + "') "
             }
