@@ -19,5 +19,5 @@ Here is the list of valid query parameters currently implemented through the API
 #### Examples
 Here are a couple examples showing valid queries
 
-` /api?season=Regular_16_17` - Returns all of the penalties that occurred in the 2016-17 Regular Season
-`/api?season=Regular_18_19&start=2018-11-14&end=2018-11-30` - Returns all of the penalties in the 2018-19 season that occur between November 14, 2018 and November 30, 2018.
+* ` /api?season=Regular_16_17` - Returns all of the penalties that occurred in the 2016-17 Regular Season
+* `/api?season=Regular_18_19&start=2018-11-14&end=2018-11-30` - Returns all of the penalties in the 2018-19 season that occur between November 14, 2018 and November 30, 2018.
