@@ -9,11 +9,6 @@ app.use(cors());
 
 const database = new DatabaseManager('season.db');
 
-
-app.get('/', (req, res) => {
-    res.send("This is the index page for the Penalty Tracker API.")
-})
-
 app.get('/api/', async (req, res)=>{
 
     let queryParams = req.query;
