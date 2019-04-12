@@ -39,11 +39,11 @@ function parseTeams(inputString){
                         { id: "WPG", name: "Winnipeg Jets"}
                     ]
     var resultTeams = [];
-    var inputList = this.parseInput(inputString);
+    var inputList = parseInput(inputString);
     if (inputList){
         inputList.forEach( (entry) => {
             teamList.forEach( (team) => {
-                if (team.id.toLowerCase() === entry.toLowerCase() || team.name.toLowerCase() === entry.toLowerCase()){
+                if (team.id.toLowerCase() === entry.toLowerCase() || team.name.toLowerCase() === entry.toLowerCase()) {
                     resultTeams.push(team.name);
                     return;
                 }
