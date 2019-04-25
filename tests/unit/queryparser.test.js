@@ -1,5 +1,5 @@
 // This is the file for all the tests related to the query parser
-const {parseInput, parseTeams} = require('../queryparser');
+const {parseInput, parseTeams} = require('../../queryparser');
 
 test("Testing parseInput - valid input",()=> {
     const testString = "Colorado,Bruins";

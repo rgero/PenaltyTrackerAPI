@@ -6,6 +6,9 @@ const QueryParser = require('./queryparser');
 const DatabaseManager = require('./databasemanager')
 const app = express();
 
+//You'll want to do conditional logic to see if the app is in a production environment
+if (process.env.NODE_ENV === "prodcuction"){ require('./startup/prod')(app); }
+
 app.use(express.json())
 app.use(cors());
 
