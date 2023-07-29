@@ -1,27 +1,33 @@
 {
-  "name": "PenaltyTracker",
+  "name": "penaltytracker",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "The API for the Penalty Tracker which will interact with the MongoDB database",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "jest --watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-    "node": "8.12.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgero/PenaltyTrackerAPI.git"
   },
-  "keywords": [],
-  "author": "Roy Gero",
+  "keywords": [
+    "node",
+    "penaltytracker",
+    "mongo"
+  ],
+  "author": "Roy W Gero II",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgero/PenaltyTrackerAPI/issues"
+  },
+  "homepage": "https://github.com/rgero/PenaltyTrackerAPI#readme",
   "dependencies": {
-    "bluebird": "^3.5.3",
-    "compression": "^1.7.4",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "helmet": "^3.23.3",
-    "sqlite3": "^4.2.0"
-  },
-  "devDependencies": {
-    "jest": "^29.3.1"
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.1",
+    "nodemon": "^3.0.1"
   }
 }
