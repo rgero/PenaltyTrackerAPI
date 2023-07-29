@@ -2,8 +2,9 @@
   "name": "penaltytracker",
   "version": "1.0.0",
   "description": "The API for the Penalty Tracker which will interact with the MongoDB database",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
