@@ -1,3 +1,4 @@
+const moment = require('moment');
 
 class PenaltyFetcher
 {
@@ -17,7 +18,7 @@ class PenaltyFetcher
     }
 
     GetGameURLS = async () => {
-        // Use the NHL API to fetch the Game URLS
+        
     }
 
     ProcessGame = async (gameURL) => {
@@ -25,3 +26,5 @@ class PenaltyFetcher
         // I don't remember if these are in the API format. I should investigate.
     }
 }
+
+export default PenaltyFetcher;

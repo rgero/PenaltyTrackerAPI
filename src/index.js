@@ -2,10 +2,10 @@ require('./models/Player');
 require('./models/Referee');
 require('./models/Penalty');
 
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const mongoose = require('./mongooseStarter')
+const mongoose = require('./mongooseStarter');
 
 mongoose.start();
 const app = express();
