@@ -55,7 +55,7 @@ There's a lot more data in the Penalty event than what used to be.
           "link" : "/api/v1/teams/22",
           "triCode" : "EDM"
         }
-      }
+      }```
 </details>
 
 I should consider storing the time of the penalty, and I might be able to see the result of the penalty (like if a goal was scored) by looking at the events occuring after it. They've also got these "event" codes. I wonder what those correspond to?
