@@ -7,18 +7,24 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
 
-mongoose.start();
-const app = express();
+const PenaltyFetcher = require('./utilities/PenaltyFetcher');
 
-//Body Parser has to be first.
-app.use(bodyParser.json());
-app.use(cors());
+// mongoose.start();
+// const app = express();
 
-/* Express Set-up */
-app.get('/', (req, res) => {
-    res.send(`Bonk`);
-})
+// //Body Parser has to be first.
+// app.use(bodyParser.json());
+// app.use(cors());
 
-app.listen(9000, ()=>{
-    console.log("Server started, listening on port 9000");
-})
+// /* Express Set-up */
+// app.get('/', (req, res) => {
+//     res.send(`Bonk`);
+// })
+
+// app.listen(9000, ()=>{
+//     console.log("Server started, listening on port 9000");
+// })
+
+let penaltyFetcher = new PenaltyFetcher.PenaltyFetcher();
+penaltyFetcher.setTargetDate("2022-02-22");
+penaltyFetcher.GetGameURLS();
