@@ -3,6 +3,7 @@ class PenaltyFetcher
 {
     constructor()
     {
+        // These got to be in YYYY-MM-DD
         this.startDate = "";
         this.endDate = "";
     }
