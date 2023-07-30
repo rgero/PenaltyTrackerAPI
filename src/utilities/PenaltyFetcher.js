@@ -4,8 +4,8 @@ class PenaltyFetcher
     constructor()
     {
         // These got to be in YYYY-MM-DD
-        this.startDate = "";
-        this.endDate = "";
+        this.startDate = moment().format("YYYY-MM-DD");
+        this.endDate = moment().format("YYYY-MM-DD");
     }
 
     setStartDate = (newDate) => {

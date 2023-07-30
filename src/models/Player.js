@@ -2,7 +2,15 @@ const mongoose = require('mongoose')
 
 const playerSchema = new mongoose.Schema(
     {
-        playerName: {
+        name: {
+            type: String,
+            default: ""
+        },
+        nhlID: {
+            type: String,
+            default: ""
+        },
+        url: {
             type: String,
             default: ""
         },
