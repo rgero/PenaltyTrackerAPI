@@ -25,6 +25,6 @@ const PenaltyFetcher = require('./utilities/PenaltyFetcher');
 //     console.log("Server started, listening on port 9000");
 // })
 
-let penaltyFetcher = new PenaltyFetcher.PenaltyFetcher();
+let penaltyFetcher = new PenaltyFetcher();
 penaltyFetcher.setTargetDate("2022-02-22");
 penaltyFetcher.GetGameURLS();

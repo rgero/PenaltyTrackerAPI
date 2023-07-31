@@ -32,7 +32,7 @@ class PenaltyFetcher
             startDate: this.startDate,
             endDate: this.endDate
         }
-        const response = await nhlAPI.nhlAPI.get('/schedule', { params: queryParams});
+        const response = await nhlAPI.get('/schedule', { params: queryParams});
         let responseData = response.data;
         let datesArray =  responseData['dates']
         datesArray.forEach( element => {
@@ -41,6 +41,8 @@ class PenaltyFetcher
                 this.gameURLs.push(game["link"])
             })
         })
+
+        console.log(this.gameURLs)
     }
 
     ProcessGame = async (gameURL) => {
@@ -48,4 +50,4 @@ class PenaltyFetcher
     }
 }
 
-exports.PenaltyFetcher = PenaltyFetcher;
+module.exports = PenaltyFetcher;
