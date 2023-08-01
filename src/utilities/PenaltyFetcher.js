@@ -42,7 +42,7 @@ class PenaltyFetcher
     FetchGameURLs = async () => {
         if( !this.startDate.isSameOrBefore(this.endDate))
         {
-            throw new Error("Start and End Date are invalid");
+            throw new Error("Start and End date are invalid");
         }
 
         let queryParams = {
