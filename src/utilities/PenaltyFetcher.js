@@ -27,7 +27,7 @@ class PenaltyFetcher
         this.endDate = moment(newDate).format("YYYY-MM-DD");
     }
 
-    GetGameURLS = async () => {
+    FetchGameURLs = async () => {
         let queryParams = {
             startDate: this.startDate,
             endDate: this.endDate
@@ -41,8 +41,6 @@ class PenaltyFetcher
                 this.gameURLs.push(game["link"])
             })
         })
-
-        console.log(this.gameURLs)
     }
 
     ProcessGame = async (gameURL) => {

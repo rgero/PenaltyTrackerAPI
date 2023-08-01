@@ -27,4 +27,4 @@ const PenaltyFetcher = require('./utilities/PenaltyFetcher');
 
 let penaltyFetcher = new PenaltyFetcher();
 penaltyFetcher.setTargetDate("2022-02-22");
-penaltyFetcher.GetGameURLS();
+penaltyFetcher.FetchGameURLs();
