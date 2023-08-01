@@ -1,4 +1,4 @@
-const moment = require('moment');
+const dayjs = require('dayjs');
 const nhlAPI = require('../api/nhl');
 
 class PenaltyFetcher
@@ -8,23 +8,22 @@ class PenaltyFetcher
     constructor()
     {
         // These got to be in YYYY-MM-DD
-        this.startDate = moment().format("YYYY-MM-DD");
-        this.endDate = moment().format("YYYY-MM-DD");
+        this.startDate = dayjs().format("YYYY-MM-DD");
+        this.endDate = dayjs().format("YYYY-MM-DD");
         this.gameURLs = []
     }
 
     setStartDate = (newDate) => {
-        // Assume the new date is a string
-        this.startDate = moment(newDate).format("YYYY-MM-DD");
+        this.startDate = dayjs(newDate).format("YYYY-MM-DD");
     }
 
     setEndDate = (newDate) => {
-        this.endDate = moment(newDate).format("YYYY-MM-DD");
+        this.endDate = dayjs(newDate).format("YYYY-MM-DD");
     }
 
     setTargetDate = (newDate) => {
-        this.startDate = moment(newDate).format("YYYY-MM-DD");
-        this.endDate = moment(newDate).format("YYYY-MM-DD");
+        this.startDate = dayjs(newDate).format("YYYY-MM-DD");
+        this.endDate = dayjs(newDate).format("YYYY-MM-DD");
     }
 
     FetchGameURLs = async () => {

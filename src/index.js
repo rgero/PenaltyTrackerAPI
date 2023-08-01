@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
 
 const PenaltyFetcher = require('./utilities/PenaltyFetcher');
+const { run } = require('jest');
 
 // mongoose.start();
 // const app = express();
@@ -25,6 +26,10 @@ const PenaltyFetcher = require('./utilities/PenaltyFetcher');
 //     console.log("Server started, listening on port 9000");
 // })
 
-let penaltyFetcher = new PenaltyFetcher();
-penaltyFetcher.setTargetDate("2022-02-22");
-penaltyFetcher.FetchGameURLs();
+const runFetcher = async () => {
+    let penaltyFetcher = new PenaltyFetcher();
+    penaltyFetcher.setTargetDate("2022-02-22");
+    await penaltyFetcher.FetchGameURLs();
+}
+
+runFetcher();

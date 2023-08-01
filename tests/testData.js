@@ -1,13 +1,4 @@
 const testData = {
-    "copyright" : "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2023. All Rights Reserved.",
-    "totalItems" : 6,
-    "totalEvents" : 0,
-    "totalGames" : 6,
-    "totalMatches" : 0,
-    "metaData" : {
-      "timeStamp" : "20230801_024204"
-    },
-    "wait" : 10,
     "dates" : [ {
       "date" : "2022-02-22",
       "totalItems" : 6,
