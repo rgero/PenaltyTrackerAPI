@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
 
 const PenaltyFetcher = require('./utilities/PenaltyFetcher');
-const { run } = require('jest');
 
 // mongoose.start();
 // const app = express();
