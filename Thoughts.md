@@ -118,6 +118,23 @@ The returned data for the Referee would be this
 }
 ```
 
+## How do I want to do the Tables?
+In the previous Penalty Tracker, I had to manually define which table to put it to. I'd rather not do that again.
+
+- From looking at the API again, the games do have a code for whether they are pre-season (PR), regular season (R), or Post Season (P).
+- They also have the season that the games are in.
+
+```
+  "gameData" : {
+    "game" : {
+      "pk" : 2022010005,
+      "season" : "20222023",
+      "type" : "PR"
+    }
+```
+
+It seems smart to store this data on the penalty class.
+
 # Intended Workflow
 ## Getting the Penalties
 This should be a process that runs nightly. In the past I had it set up to run between 3-5AM local time. This allowed for the games on the west coast to complete, thus getting all of the data. Since this is going to be the whole API. I am intending on making a private post route that will require an environment variable/some sort of security check. This post route will do the following
