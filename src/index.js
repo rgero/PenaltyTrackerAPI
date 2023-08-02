@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
 
 const PenaltyFetcher = require('./utilities/PenaltyFetcher');
+const ValidateTeam = require('./utilities/ValidateTeam');
 
 // mongoose.start();
 // const app = express();
@@ -28,7 +29,8 @@ const PenaltyFetcher = require('./utilities/PenaltyFetcher');
 const runFetcher = async () => {
     let penaltyFetcher = new PenaltyFetcher();
     penaltyFetcher.setTargetDate("2022-02-22");
-    await penaltyFetcher.FetchGameURLs();
+    await penaltyFetcher.FetchGameURLs();    
+    await penaltyFetcher.Perform();
 }
 
 runFetcher();

@@ -15,6 +15,7 @@ class PenaltyFetcher
         this.startDate = dayjs()
         this.endDate = dayjs()
         this.gameURLs = []
+        this.penaltyList = [];
     }
 
     setStartDate = (newDate) => {
@@ -69,6 +70,9 @@ class PenaltyFetcher
         let homeTeam = data["gameData"]["teams"]["home"]["name"];
         let awayTeam = data["gameData"]["teams"]["away"]["name"];
 
+        // NHL's API stores time in GMT.
+        let gameDate = data["gameData"]["datetime"]["dateTime"];
+
         let refereeList = [];
         let refereeArray = data["liveData"]["boxscore"]["officials"];
         refereeArray.forEach(potentialRef => {
@@ -82,7 +86,6 @@ class PenaltyFetcher
         })
 
         let penaltyMasterList = data["liveData"]["plays"]["penaltyPlays"];
-        let penaltyList = [];
         penaltyMasterList.forEach(penaltyIndex => {
             let penaltyEvent = data["liveData"]["plays"]["allPlays"][penaltyIndex]
             let penaltyName = penaltyEvent["result"]["secondaryType"]
@@ -113,11 +116,10 @@ class PenaltyFetcher
             newPenalty.setOpponent( homeStatus ? awayTeam : homeTeam );
             newPenalty.refereeList = refereeList;
             newPenalty.penalty = penaltyName;
+            newPenalty.setDate(gameDate);
 
-            penaltyList.push(newPenalty);
+            this.penaltyList.push(newPenalty);
         })
-
-        console.log(penaltyList.length);
     }
 
     Perform = async () => {
