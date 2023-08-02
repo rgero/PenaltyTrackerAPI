@@ -123,8 +123,6 @@ class PenaltyFetcher
             newPenalty.setSeasonType(seasonType)
             newPenalty.season = season;
             
-            console.log(newPenalty.toString())
-
             this.penaltyList.push(newPenalty);
         })
     }
@@ -135,9 +133,10 @@ class PenaltyFetcher
             return;
         }
 
-        await this.gameURLs.forEach( async game => {
+        for(const game of this.gameURLs)
+        {
             await this.ProcessGame(game);
-        })
+        }
     }
 }
 
