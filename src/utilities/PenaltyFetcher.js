@@ -65,16 +65,19 @@ class PenaltyFetcher
 
     ProcessGame = async (gameURL) => {
         const response = await nhlInteractor.get(gameURL);
-        const data = response.data;
+        const gameData = response.data["gameData"];
+        const liveData = response.data["liveData"];
 
-        let homeTeam = data["gameData"]["teams"]["home"]["name"];
-        let awayTeam = data["gameData"]["teams"]["away"]["name"];
+        let homeTeam = gameData["teams"]["home"]["name"];
+        let awayTeam = gameData["teams"]["away"]["name"];
 
         // NHL's API stores time in GMT.
-        let gameDate = data["gameData"]["datetime"]["dateTime"];
+        let gameDate = gameData["datetime"]["dateTime"];
+        let seasonType = gameData["game"]["type"]
+        let season = gameData["game"]["season"]
 
         let refereeList = [];
-        let refereeArray = data["liveData"]["boxscore"]["officials"];
+        let refereeArray = liveData["boxscore"]["officials"];
         refereeArray.forEach(potentialRef => {
             if (potentialRef["officialType"].toLowerCase() == "referee")
             {
@@ -85,9 +88,9 @@ class PenaltyFetcher
             }
         })
 
-        let penaltyMasterList = data["liveData"]["plays"]["penaltyPlays"];
+        let penaltyMasterList = liveData["plays"]["penaltyPlays"];
         penaltyMasterList.forEach(penaltyIndex => {
-            let penaltyEvent = data["liveData"]["plays"]["allPlays"][penaltyIndex]
+            let penaltyEvent = liveData["plays"]["allPlays"][penaltyIndex]
             let penaltyName = penaltyEvent["result"]["secondaryType"]
             let playerTeamName = penaltyEvent["team"]["name"]
 
@@ -117,6 +120,10 @@ class PenaltyFetcher
             newPenalty.refereeList = refereeList;
             newPenalty.penalty = penaltyName;
             newPenalty.setDate(gameDate);
+            newPenalty.setSeasonType(seasonType)
+            newPenalty.season = season;
+            
+            console.log(newPenalty.toString())
 
             this.penaltyList.push(newPenalty);
         })

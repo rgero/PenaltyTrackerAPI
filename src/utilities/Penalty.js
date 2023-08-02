@@ -10,7 +10,9 @@ class Penalty
                 opposingTeam = "", 
                 homeStatus = false, 
                 refereeList = [], 
-                date = dayjs() )
+                date = dayjs(),
+                seasonType = "",
+                season = "" )
     {
         this.player = player;
         this.penalty = penalty;
@@ -18,6 +20,8 @@ class Penalty
         this.homeStatus = homeStatus;
         this.refereeList = refereeList;
         this.date = date;
+        this.seasonType = seasonType;
+        this.season = season;
     }
 
     setOpponent = (team) => {
@@ -36,6 +40,28 @@ class Penalty
             throw new Error("Penalty Date is invalid");
         }
         this.date = targetDate;
+    }
+
+    setSeasonType = (type) => {
+        switch(type)
+        {
+            case 'PR':
+                type = "Preseason"
+                break;
+            case 'R':
+                type = 'Regular';
+                break;
+            case 'P':
+                type = 'Post';
+                break;
+            default:
+                type = "Unknown"
+        }
+        this.seasonType = type;
+    }
+
+    toString = () => {
+        return this.player.toString() + " - " + this.penalty
     }
 }
 

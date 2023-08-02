@@ -34,6 +34,10 @@ class Player
     GetURL = () => {
         return this.url;
     }
+
+    toString = () => {
+        return this.name + " - " + this.team;
+    }
 }
 
 module.exports = Player;
