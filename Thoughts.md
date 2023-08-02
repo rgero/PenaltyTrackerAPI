@@ -117,3 +117,16 @@ The returned data for the Referee would be this
     "officialType" : "Referee"
 }
 ```
+
+# Intended Workflow
+## Getting the Penalties
+This should be a process that runs nightly. In the past I had it set up to run between 3-5AM local time. This allowed for the games on the west coast to complete, thus getting all of the data. Since this is going to be the whole API. I am intending on making a private post route that will require an environment variable/some sort of security check. This post route will do the following
+
+1. Create the Penalty Fetcher (the tool I'm using to interact with the NHL's API).
+2. Have the Penalty Fetcher perform its operation, gathering all of the penalty data.
+3. Once all the penalties have been constructed, pushing them to the database.
+
+The intent is to separate this into two separate tools. The Penalty Fetcher will only interact with the NHL's API and the Database Manager will be the tool that handles all database connections.
+
+## Fetching the Penalties
+As stated, I intend on having this be a full API, but I should provide some sort of Query Constructor. Something that allows the user to easily construct their query then pass that to the Database Manager. I want to keep this query constructor separate from the Database Manager. In the past version of the Penalty Tracker, I didn't comparmentalize the project. So the interaction with the NHL API, the manipulation of the database and the query construction were all one piece. This made changing the database to a different type rather annoying. I'd like to avoid this so I can easily change from MongoDB to some other one easily.
