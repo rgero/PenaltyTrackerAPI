@@ -1,4 +1,4 @@
-const PenaltyFetcher = require('../../src/utilities/PenaltyFetcher');
+const PenaltyFetcher = require('../../src/PenaltyFetcher/PenaltyFetcher');
 const axios = require("axios");
 
 const {testData} = require('../testData');

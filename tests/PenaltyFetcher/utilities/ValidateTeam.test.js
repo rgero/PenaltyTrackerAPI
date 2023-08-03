@@ -1,4 +1,4 @@
-const ValidateTeam = require('../../src/utilities/ValidateTeam');
+const ValidateTeam = require('../../../src/PenaltyFetcher/utilities/ValidateTeam');
 
 const teamList = [
     "Anaheim Ducks",

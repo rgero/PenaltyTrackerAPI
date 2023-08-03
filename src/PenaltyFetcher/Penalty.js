@@ -29,6 +29,7 @@ class Penalty
         {
             throw new Error("Invalid Opponent Team");
         }
+        this.opposingTeam = team;
     }
 
     // Remember NHL API stores time in GMT.
@@ -43,19 +44,20 @@ class Penalty
     }
 
     setSeasonType = (type) => {
-        switch(type)
+        switch(type.toLowerCase())
         {
-            case 'PR':
+            case 'pr':
                 type = "Preseason"
                 break;
-            case 'R':
+            case 'r':
                 type = 'Regular';
                 break;
-            case 'P':
+            case 'p':
                 type = 'Post';
                 break;
             default:
                 type = "Unknown"
+                break;
         }
         this.seasonType = type;
     }
