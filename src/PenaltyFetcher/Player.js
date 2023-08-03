@@ -29,6 +29,10 @@ class Player
     constructURL = () => {
         // The format is as follows:
         // nhl.com/player/{name with hyphen}-{playerID}
+        let urlSuffix = this.name.replace(/\s+/g, '-').toLowerCase();
+        urlSuffix += "-" + this.id;
+
+        this.url = 'http://nhl.com/player/' + urlSuffix;
     }
 
     GetURL = () => {
