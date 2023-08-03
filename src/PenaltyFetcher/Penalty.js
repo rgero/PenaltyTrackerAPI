@@ -1,7 +1,7 @@
 const dayjs = require('dayjs');
 var utc = require('dayjs/plugin/utc')
 dayjs.extend(utc)
-const ValidateTeam = require("./ValidateTeam");
+const ValidateTeam = require("./utilities/ValidateTeam");
 
 class Penalty 
 {

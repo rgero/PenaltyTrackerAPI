@@ -1,4 +1,4 @@
-const ValidateTeam = require("./ValidateTeam");
+const ValidateTeam = require("./utilities/ValidateTeam");
 
 class Player
 {
