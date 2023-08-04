@@ -6,5 +6,5 @@ test("Constructs Valid Player URL", ()=> {
     testPlayer.setID(8475791)
     expect(()=> {testPlayer.constructURL()}).not.toThrow();
 
-    expect(testPlayer.GetURL()).toBe('http://nhl.com/player/taylor-hall-8475791')
+    expect(testPlayer.GetURL().toString()).toBe('http://nhl.com/player/taylor-hall-8475791')
 })
