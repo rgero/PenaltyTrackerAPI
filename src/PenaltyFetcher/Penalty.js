@@ -63,7 +63,24 @@ class Penalty
     }
 
     toString = () => {
-        return this.player.toString() + " - " + this.penalty
+        let refereeJSONList = [];
+        for(const ref of this.refereeList)
+        {
+            refereeJSONList.push(ref.toString());
+        }
+
+        let penalty = {
+            player: this.player.toString(),
+            penalty: this.penalty,
+            opponent: this.opposingTeam,
+            home: this.homeStatus,
+            date: this.date,
+            refereeList: refereeJSONList,
+            season: this.season,
+            seasonType: this.seasonType,
+        }
+
+        return JSON.stringify(penalty);
     }
 }
 

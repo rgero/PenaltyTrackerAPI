@@ -39,8 +39,15 @@ class Player
     }
 
     toString = () => {
-        return this.name + " - " + this.team;
-    }
+        let player = {
+            name: this.name,
+            team: this.team,
+            id: this.id,
+            url: this.GetURL().toString(),
+        }
+
+        return JSON.stringify(player);
+    }    
 }
 
 module.exports = Player;
