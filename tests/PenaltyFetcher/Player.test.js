@@ -12,14 +12,23 @@ test("Constructs Valid Player URL", ()=> {
 describe("Player - Teams", ()=> {
 
     test("Setting a valid team", ()=> {
-        testPlayer = new Player();
+        let testPlayer = new Player();
         expect(()=>{testPlayer.setTeam("Boston Bruins")}).not.toThrow();
         expect(testPlayer.team).toBe("Boston Bruins");
     })
 
     test("Setting invalid team", ()=> {
-        testPlayer = new Player();
+        let testPlayer = new Player();
         expect(()=>{testPlayer.setTeam("Boston Red Sox")}).toThrow("Invalid Player Team");
         expect(testPlayer.team).toBe("");
     })
+})
+
+test("Full player to String", ()=>{
+    let testPlayer = new Player();
+    testPlayer.setName("Sam Bennett")
+    testPlayer.setTeam("Florida Panthers")
+    testPlayer.setID(8477935);
+    let correctString = "{\"name\":\"Sam Bennett\",\"team\":\"Florida Panthers\",\"id\":8477935,\"url\":\"http://nhl.com/player/sam-bennett-8477935\"}"
+    expect(testPlayer.toString()).toBe(correctString);
 })

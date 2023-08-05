@@ -6,7 +6,7 @@ class Player
     {
         this.name = "";
         this.id = -1;
-        this.url = "";
+        this.url = null;
         this.team = "";
     }
 
@@ -35,6 +35,15 @@ class Player
     }
 
     GetURL = () => {
+        if (this.id == -1 || this.name == "")
+        {
+            throw new Error ("Player data not filled out completely, cannot get url");
+        }
+
+        if (this.url == null)
+        {
+            this.constructURL();
+        }
         return this.url;
     }
 
