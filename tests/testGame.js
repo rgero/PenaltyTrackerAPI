@@ -1,3 +1,119 @@
+const correctPenaltyList = [
+        {
+          player: {
+            name: 'Mikael Granlund',
+            team: 'Nashville Predators',
+            id: 8475798,
+            url: 'http://nhl.com/player/mikael-granlund-8475798'
+          },
+          penalty: 'Holding',
+          opponent: 'Florida Panthers',
+          home: false,
+          date: '2022-02-23T00:00:00.000Z',
+          refereeList: [
+            { name: 'Kelly Sutherland', id: 2265 },
+            { name: 'Jean Hebert', id: 4604 }
+          ],
+          season: '20212022',
+          seasonType: 'Regular'
+        },
+        {
+          player: {
+            name: 'Aleksander Barkov',
+            team: 'Florida Panthers',
+            id: 8477493,
+            url: 'http://nhl.com/player/aleksander-barkov-8477493'
+          },
+          penalty: 'Interference',
+          opponent: 'Nashville Predators',
+          home: false,
+          date: '2022-02-23T00:00:00.000Z',
+          refereeList: [
+            { name: 'Kelly Sutherland', id: 2265 },
+            { name: 'Jean Hebert', id: 4604 }
+          ],
+          season: '20212022',
+          seasonType: 'Regular'
+        },
+        {
+          player: {
+            name: 'MacKenzie Weegar',
+            team: 'Florida Panthers',
+            id: 8477346,
+            url: 'http://nhl.com/player/mackenzie-weegar-8477346'
+          },
+          penalty: 'Roughing',
+          opponent: 'Nashville Predators',
+          home: false,
+          date: '2022-02-23T00:00:00.000Z',
+          refereeList: [
+            { name: 'Kelly Sutherland', id: 2265 },
+            { name: 'Jean Hebert', id: 4604 }
+          ],
+          season: '20212022',
+          seasonType: 'Regular'
+        },
+        {
+          player: {
+            name: 'Philip Tomasino',
+            team: 'Nashville Predators',
+            id: 8481577,
+            url: 'http://nhl.com/player/philip-tomasino-8481577'
+          },
+          penalty: 'Too many men on the ice',
+          opponent: 'Florida Panthers',
+          home: false,
+          date: '2022-02-23T00:00:00.000Z',
+          refereeList: [
+            { name: 'Kelly Sutherland', id: 2265 },
+            { name: 'Jean Hebert', id: 4604 }
+          ],
+          season: '20212022',
+          seasonType: 'Regular'
+        },
+        {
+          player: {
+            name: 'Alexandre Carrier',
+            team: 'Nashville Predators',
+            id: 8478851,
+            url: 'http://nhl.com/player/alexandre-carrier-8478851'
+          },
+          penalty: 'Cross checking',
+          opponent: 'Florida Panthers',
+          home: false,
+          date: '2022-02-23T00:00:00.000Z',
+          refereeList: [
+            { name: 'Kelly Sutherland', id: 2265 },
+            { name: 'Jean Hebert', id: 4604 }
+          ],
+          season: '20212022',
+          seasonType: 'Regular'
+        },
+        {
+          player: {
+            name: 'Sam Bennett',
+            team: 'Florida Panthers',
+            id: 8477935,
+            url: 'http://nhl.com/player/sam-bennett-8477935'
+          },
+          penalty: 'Cross checking',
+          opponent: 'Nashville Predators',
+          home: false,
+          date: '2022-02-23T00:00:00.000Z',
+          refereeList: [
+            {
+              "id": 2265,
+              "name": "Kelly Sutherland"
+            },{
+              "id": 4604,
+              "name": "Jean Hebert"
+            }
+          ],
+          season: '20212022',
+          seasonType: 'Regular'
+        }
+]
+
 const testGame = {
     "copyright" : "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2023. All Rights Reserved.",
     "gamePk" : 2021020511,
@@ -18333,5 +18449,6 @@ const testGame = {
   }
 
 module.exports = {
+    correctPenaltyList: correctPenaltyList,
     testGame: testGame
 };

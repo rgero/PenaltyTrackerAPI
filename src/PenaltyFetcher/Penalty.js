@@ -62,24 +62,27 @@ class Penalty
         this.seasonType = type;
     }
 
-    toString = () => {
+    toJSON = () => {
         let refereeJSONList = [];
         for(const ref of this.refereeList)
         {
-            refereeJSONList.push(ref.toString());
+            refereeJSONList.push(ref.toJSON());
         }
 
-        let penalty = {
-            player: this.player.toString(),
+        return {
+            player: this.player.toJSON(),
             penalty: this.penalty,
             opponent: this.opposingTeam,
             home: this.homeStatus,
-            date: this.date,
+            date: this.date.toJSON(),
             refereeList: refereeJSONList,
             season: this.season,
             seasonType: this.seasonType,
         }
+    }
 
+    toString = () => {
+        let penalty = this.toJSON();
         return JSON.stringify(penalty);
     }
 }

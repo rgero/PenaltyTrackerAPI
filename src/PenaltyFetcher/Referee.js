@@ -13,12 +13,16 @@ class Referee
     setID = (id) => {
         this.id = id;
     }
-    
-    toString = () => {
-        let referee = {
+
+    toJSON = () => {
+        return {
             name: this.name,
             id: this.id
         }
+    }
+    
+    toString = () => {
+        let referee = this.toJSON();
         return JSON.stringify(referee);
     }
 }

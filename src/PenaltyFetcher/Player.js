@@ -48,15 +48,18 @@ class Player
     }
 
     toString = () => {
-        let player = {
+        let player = this.toJSON();
+        return JSON.stringify(player);
+    }
+
+    toJSON = () => {
+        return {
             name: this.name,
             team: this.team,
             id: this.id,
             url: this.GetURL().toString(),
         }
-
-        return JSON.stringify(player);
-    }    
+    }
 }
 
 module.exports = Player;
