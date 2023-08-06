@@ -7,8 +7,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
 
-const PenaltyFetcher = require('./PenaltyFetcher/PenaltyFetcher');
-
 mongoose.start();
 const app = express();
 

@@ -2,7 +2,7 @@ const dayjs = require('dayjs');
 var isSameOrBefore = require('dayjs/plugin/isSameOrBefore')
 dayjs.extend(isSameOrBefore)
 
-const nhlInteractor = require('../api/nhl');
+const nhlInteractor = require('./api/nhl');
 const Referee = require('./Referee');
 const Player = require('./Player');
 const Penalty = require('./Penalty');

@@ -4,7 +4,7 @@
   "description": "The API for the Penalty Tracker which will interact with the MongoDB database",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon src/PenaltyTrackerAPI/DatabaseApplication.js",
     "test": "jest --watch"
   },
   "repository": {
