@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const penaltySchema = new mongoose.Schema(
     {
-        playerID: {
+        player: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Player'
         },
@@ -14,11 +14,11 @@ const penaltySchema = new mongoose.Schema(
             type: String,
             default: ""
         },
-        isHome: {
+        home: {
             type: String,
             default: ""
         },
-        gameDate: {
+        date: {
             type: Date,
             required: true
         },
@@ -27,7 +27,15 @@ const penaltySchema = new mongoose.Schema(
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Referee'
             }
-        ]
+        ],
+        seasonType: {
+            type: String,
+            default: ""
+        },
+        season: {
+            type: String,
+            default: ""
+        }
     }
 );
 

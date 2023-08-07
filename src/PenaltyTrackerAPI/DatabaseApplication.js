@@ -6,7 +6,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
+
+const penaltyRoutes = require('./routes/penaltyRoutes')
 const playerRoutes = require('./routes/playerRoutes')
+const refereeRoutes = require('./routes/refereeRoutes')
 
 mongoose.start();
 const app = express();
@@ -14,16 +17,13 @@ const app = express();
 //Body Parser has to be first.
 app.use(bodyParser.json());
 app.use(cors());
+app.use(penaltyRoutes);
 app.use(playerRoutes);
+app.use(refereeRoutes);
 
 /* Express Set-up */
 app.get('/', async (req, res) => {
-    let penaltyFetcher = new PenaltyFetcher();
-    penaltyFetcher.setTargetDate("2022-02-22");
-    await penaltyFetcher.FetchGameURLs();    
-    await penaltyFetcher.Perform();
-
-    res.send(penaltyFetcher.penaltyList);
+    res.send("Go to penalties.")
 })
 
 app.listen(9000, ()=>{

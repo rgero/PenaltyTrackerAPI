@@ -7,7 +7,7 @@ module.exports = {
         const desiredPassword = credentials["password"]
         
         /* Mongoose connection */
-        const mongoURI = `mongodb+srv://${desiredUsername}:${desiredPassword}@penaltytracker.myhmkw6.mongodb.net/?retryWrites=true&w=majority`
+        const mongoURI = `mongodb+srv://${desiredUsername}:${desiredPassword}@penaltytracker.myhmkw6.mongodb.net/Penalties?retryWrites=true&w=majority`
         mongoose.connect(mongoURI)
         
         mongoose.connection.on("connected", ()=> {

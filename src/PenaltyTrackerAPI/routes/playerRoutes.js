@@ -42,8 +42,7 @@ router.post('/players', async (req, res) => {
     }
 
     try {
-        const player = new Player({name, nhlID, url, team})
-        await player.save();
+        const player = Player.findOneAndUpdate({name, nhlID, url, team}, {upsert: true, new: true});
         res.send(player);
     } catch (err)
     {

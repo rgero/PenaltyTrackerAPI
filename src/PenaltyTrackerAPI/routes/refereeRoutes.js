@@ -42,8 +42,7 @@ router.post('/referees', async (req, res) => {
     }
 
     try {
-        const referee = new Referee({name, nhlID})
-        await referee.save();
+        const referee = Referee.findOneAndUpdate({name, nhlID}, {upsert: true, new: true});
         res.send(referee);
     } catch (err)
     {
