@@ -14,8 +14,7 @@ router.get('/players', async (req, res) => {
 
 router.get('/players/:playerID', async (req, res) => {
     try {
-        let targetID = parseInt(req.params.playerID)
-        let player = await Player.findOne({nhlID: targetID}, exclusionString)
+        let player = await Player.findOne({nhlID: req.params.playerID}, exclusionString)
         if (player)
         {
             res.send(player);

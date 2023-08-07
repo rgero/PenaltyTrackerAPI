@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const refereeSchema = new mongoose.Schema(
     {
-        id: {
+        nhlID: {
             type: String,
             default: ""
         },
