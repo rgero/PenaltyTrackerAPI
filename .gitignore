@@ -131,3 +131,4 @@ dist
 
 # Just mine
 src/credentials.js
+src/PenaltyTrackerAPI/credentials.js

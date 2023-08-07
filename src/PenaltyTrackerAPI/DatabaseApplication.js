@@ -6,6 +6,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('./mongooseStarter');
+const playerRoutes = require('./routes/playerRoutes')
 
 mongoose.start();
 const app = express();
@@ -13,6 +14,7 @@ const app = express();
 //Body Parser has to be first.
 app.use(bodyParser.json());
 app.use(cors());
+app.use(playerRoutes);
 
 /* Express Set-up */
 app.get('/', async (req, res) => {
