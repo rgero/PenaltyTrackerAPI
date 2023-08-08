@@ -32,3 +32,13 @@ test("Full player to String", ()=>{
     let correctString = "{\"name\":\"Sam Bennett\",\"team\":\"Florida Panthers\",\"id\":8477935,\"url\":\"http://nhl.com/player/sam-bennett-8477935\"}"
     expect(testPlayer.toString()).toBe(correctString);
 })
+
+test("Full Player to JSON", () => {
+    let testPlayer = new Player();
+    testPlayer.setName("Sam Bennett")
+    testPlayer.setTeam("Florida Panthers")
+    testPlayer.setID(8477935);
+    
+    let correctValue = {"id": 8477935, "name": "Sam Bennett", "team": "Florida Panthers", "url": "http://nhl.com/player/sam-bennett-8477935"};
+    expect(testPlayer.toJSON()).toStrictEqual(correctValue);
+})
