@@ -9,3 +9,7 @@ In order for this to be a viable project, this project must fully implement the 
 * It must return the results in JSON.
 
 In addition to the above, I want it to be fully covered by automated tests.
+
+# Updates on April 2024
+- I want to switch the database to Supabase. Doing this will enable me to quickly get a Front End up and running
+- The public API has changed for the NHL data. This needs to be updated.
